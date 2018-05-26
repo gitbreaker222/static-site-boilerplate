@@ -3,10 +3,9 @@
 - Metalsmith
 - handlebars
 - sass
-TODO
-- css framework: bulma
+- bulma
 - js framework: riot??
 
-to generate dist folder from content:
+to generate build folder from content:
 
     $ make build

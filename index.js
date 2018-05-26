@@ -8,6 +8,7 @@ const postcss       = require('metalsmith-with-postcss')
 
 const metadata    = require('./content/metadata.json')
 
+// Build HTML / Structure
 Metalsmith(__dirname)
   .source('./content')
   .destination('./build')
@@ -28,6 +29,7 @@ Metalsmith(__dirname)
     if (err) { throw err; }
   });
 
+// Build CSS
 Metalsmith(__dirname)
   .source('./src/sass')
   .destination('./build/css')
