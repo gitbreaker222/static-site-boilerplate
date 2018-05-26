@@ -3,13 +3,14 @@ const markdown    = require('metalsmith-markdown');
 const layouts     = require('metalsmith-layouts');
 const discoverPartials = require('metalsmith-discover-partials')
 const sass          = require('metalsmith-sass')
+const postcss       = require('metalsmith-with-postcss')
 // var permalinks  = require('metalsmith-permalinks');
 
 const metadata    = require('./content/metadata.json')
 
 Metalsmith(__dirname)
   .source('./content')
-  .destination('./dist')
+  .destination('./build')
   .clean(true)
   .ignore(['metadata.json'])
   .metadata(metadata)
@@ -27,12 +28,18 @@ Metalsmith(__dirname)
     if (err) { throw err; }
   });
 
-// Metalsmith(__dirname)
-//   .source('./src/sass')
-//   .destination('./dist/css')
-//   .clean(false)
-//   .metadata(metadata)
-//   .use(sass())
-//   .build(function(err, files) {
-//     if (err) { throw err; }
-//   });
+Metalsmith(__dirname)
+  .source('./src/sass')
+  .destination('./build/css')
+  .clean(false)
+  .metadata(metadata)
+  .use(sass())
+  .use(postcss({
+    pattern: ['**/*.css', '!**/_*/*', '!**/_*'],
+    plugins: {
+      'autoprefixer': {}
+    }
+  }))
+  .build(function(err, files) {
+    if (err) { throw err; }
+  });
