@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-2018",
+  "name": "static-site-boilerplate",
   "version": "1.0.0",
   "description": "This example uses Metalsmith to make a static site. Just run:",
   "main": "index.js",
@@ -11,6 +11,7 @@
     "metalsmith-layouts": "^2.1.0",
     "metalsmith-markdown": "^0.2.2",
     "metalsmith-sass": "^1.5.1",
+    "metalsmith-watch": "^1.0.3",
     "metalsmith-with-postcss": "^1.1.0"
   },
   "devDependencies": {},

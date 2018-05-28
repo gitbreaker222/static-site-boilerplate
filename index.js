@@ -4,13 +4,14 @@ const layouts     = require('metalsmith-layouts');
 const discoverPartials = require('metalsmith-discover-partials')
 const sass          = require('metalsmith-sass')
 const postcss       = require('metalsmith-with-postcss')
+const watch = require('metalsmith-watch');
 // var permalinks  = require('metalsmith-permalinks');
 
-const metadata    = require('./content/metadata.json')
+const metadata    = require('./src/content/metadata.json')
 
 // Build HTML / Structure
 Metalsmith(__dirname)
-  .source('./content')
+  .source('./src/content')
   .destination('./build')
   .clean(true)
   .ignore(['metadata.json'])
@@ -25,9 +26,16 @@ Metalsmith(__dirname)
     directory: './src/layouts',
     default: 'layout.html',
   }))
+  .use(watch({
+    paths: {
+      "./src/layouts/**/*": '**/*',
+    }
+  }))
   .build(function(err, files) {
     if (err) { throw err; }
   });
+
+
 
 // Build CSS
 Metalsmith(__dirname)
@@ -40,6 +48,11 @@ Metalsmith(__dirname)
     pattern: ['**/*.css', '!**/_*/*', '!**/_*'],
     plugins: {
       'autoprefixer': {}
+    }
+  }))
+  .use(watch({
+    paths: {
+      "${source}/**/*": true,
     }
   }))
   .build(function(err, files) {
