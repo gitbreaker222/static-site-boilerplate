@@ -1,13 +1,14 @@
-const Metalsmith  = require('metalsmith');
-const markdown    = require('metalsmith-markdown');
-const layouts     = require('metalsmith-layouts');
+const Metalsmith = require('metalsmith');
+const markdown = require('metalsmith-markdown');
+const layouts = require('metalsmith-layouts');
 const discoverPartials = require('metalsmith-discover-partials')
-const sass          = require('metalsmith-sass')
-const postcss       = require('metalsmith-with-postcss')
+const sass = require('metalsmith-sass')
+const postcss = require('metalsmith-with-postcss')
 const watch = require('metalsmith-watch');
+const serve = require('metalsmith-serve');
 // var permalinks  = require('metalsmith-permalinks');
 
-const metadata    = require('./src/content/metadata.json')
+const metadata = require('./src/content/metadata.json')
 
 // Build HTML / Structure
 Metalsmith(__dirname)
@@ -32,7 +33,9 @@ Metalsmith(__dirname)
     }
   }))
   .build(function(err, files) {
-    if (err) { throw err; }
+    if (err) {
+      throw err;
+    }
   });
 
 
@@ -42,7 +45,6 @@ Metalsmith(__dirname)
   .source('./src/sass')
   .destination('./build/css')
   .clean(false)
-  .metadata(metadata)
   .use(sass())
   .use(postcss({
     pattern: ['**/*.css', '!**/_*/*', '!**/_*'],
