@@ -56,5 +56,28 @@ Metalsmith(__dirname)
     }
   }))
   .build(function(err, files) {
-    if (err) { throw err; }
+    if (err) {
+      throw err;
+    }
+  });
+
+// Copy assets
+Metalsmith(__dirname)
+  .source('./src/assets')
+  .destination('./build/assets')
+  .clean(false)
+  .build(function(err, files) {
+    if (err) {
+      throw err;
+    }
+  });
+
+// Start server
+Metalsmith(__dirname)
+  .source('./build')
+  .use(serve())
+  .build(function(err, files) {
+    if (err) {
+      throw err;
+    }
   });
