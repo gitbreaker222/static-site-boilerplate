@@ -20,12 +20,12 @@ Metalsmith(__dirname)
   .use(markdown())
   .use(discoverPartials({
     directory: './src/layouts/partials',
-    pattern: /\.hbs$/
+    pattern: /\.hbs/
   }))
   .use(layouts({
     engine: 'handlebars',
     directory: './src/layouts',
-    default: 'layout.html',
+    default: 'layout.hbs',
   }))
   .use(watch({
     paths: {

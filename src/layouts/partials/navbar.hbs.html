@@ -1,0 +1,47 @@
+<nav class="navbar"
+     role="navigation"
+     aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item"
+       href="/">
+      <img src="assets/img/logo.svg" alt="generic logo">
+    </a>
+    <a role="button"
+       class="navbar-burger"
+       aria-label="menu"
+       aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item"
+         href="/">
+          Start
+        </a>
+      <a class="navbar-item"
+         href="/">
+          Activity
+        </a>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item"
+         href="/">
+          Impress
+        </a>
+    </div>
+  </div>
+
+  <script>
+    app.btnEl = document.querySelector('nav .navbar-brand .navbar-burger')
+    app.menuEl = document.querySelector('nav .navbar-menu')
+
+    app.btnEl.addEventListener('click', function() {
+      app.btnEl.classList.toggle('is-active');
+      app.menuEl.classList.toggle('is-active');
+    })
+  </script>
+</nav>

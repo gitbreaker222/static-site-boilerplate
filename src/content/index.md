@@ -1,5 +1,5 @@
 ---
-layout: layout.hbs
+
 ---
 
 # static-site
