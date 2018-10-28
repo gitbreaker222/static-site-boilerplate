@@ -1,0 +1,50 @@
+
+path: '/'
+menu:
+  -
+    name: artists
+    path: '/01_artists'
+  -
+    name: albums
+    path: '/02_albums'
+  -
+    name: genres
+    path: '/03_genres'
+    menu:
+      -
+        name: rock
+        path: /01_rock
+      -
+        name: electro
+        path: /03_electro
+      -
+        name: metal
+        path: /metal
+        menu:
+          -
+            name: heavy-metal
+            path: /heavy-metal
+          -
+            name: metalcore
+            path: /metalcore
+          -
+            name: more
+            path: /more
+            menu:
+              -
+                name: black-metal
+                path: /black-metal
+              -
+                name: death-metal
+                path: /death-metal
+  -
+    name: labels
+    path: /04_labels
+  -
+    name: releases
+    path: /04_releases
+    menu:
+      -
+        name: LOVE-MACHINE--Solar-Phallus
+        path: /2018-10-28_LOVE-MACHINE--Solar-Phallus
+        
